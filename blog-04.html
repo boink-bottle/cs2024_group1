@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Small Small Sips, Big Change: The Reusable Bottle Effect - BOINK!</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Titan+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        body {
+            line-height: 1.6;
+            color: #333;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .titan-one {
+            font-family: "Titan One", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+        }
+        
+        /* Header Styles */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            background-color: #fff;
+        }
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            color: #0099FF;
+            font-size: 32px;
+            font-weight: bold;
+            font-family: "Titan One", sans-serif;
+        }
+        
+        .logo img {
+            height: 40px; 
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 20px;
+        }
+        
+        nav ul li a {
+            color: #333;
+            font-weight: 400;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        nav ul li a:hover {
+            color: #0099FF;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(to right, #bbdfa0, #7cc644);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+        }
+        
+        .hero-badge {
+            display: inline-block;
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 5px 15px;
+            border-radius: 20px;
+            margin-bottom: 15px;
+            font-size: 14px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 400;
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 10px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            font-family: "Titan One", sans-serif;
+            line-height: 1.2;
+        }
+        
+        .hero-meta {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+            font-size: 14px;
+            gap: 20px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 400;
+        }
+        
+        .hero-meta-item {
+            display: flex;
+            align-items: center;
+            margin: 0 10px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 400;
+        }
+        
+        .hero-meta-item svg {
+            margin-right: 5px;
+        }
+        
+        /* Blog Content */
+        .blog-content {
+            max-width: 800px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+        
+        .blog-image {
+            margin: 30px 0;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .blog-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .blog-content p {
+            margin-bottom: 20px;
+            font-size: 18px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 400;
+        }
+        
+        .blog-content h2 {
+            font-size: 28px;
+            margin: 40px 0 20px;
+            color: #4CAF50;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+        }
+        
+        .blog-content h3 {
+            font-size: 22px;
+            margin: 30px 0 15px;
+            color: #4CAF50;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+        }
+        
+        .blog-content ul, .blog-content ol {
+            margin-bottom: 20px;
+            padding-left: 20px;
+        }
+        
+        .blog-content li {
+            margin-bottom: 10px;
+            font-size: 18px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 400;
+        }
+        
+        .eco-tip {
+            background-color: #F0FFF0;
+            border-left: 4px solid #4CAF50;
+            padding: 20px;
+            margin: 30px 0;
+            border-radius: 5px;
+        }
+        
+        .eco-tip h4 {
+            color: #4CAF50;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+        }
+        
+        .eco-tip h4:before {
+            content: "🌱";
+            margin-right: 10px;
+        }
+        
+        .checklist-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 400;
+        }
+        
+        .checklist-item:before {
+            content: "✅";
+            margin-right: 10px;
+            flex-shrink: 0;
+        }
+        
+        /* Read More Section */
+        .read-more {
+            text-align: center;
+            margin: 60px 0;
+        }
+        
+        .read-more-button {
+            display: inline-block;
+            background-color: #7CC644;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 5px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 400;
+            transition: background-color 0.3s;
+        }
+        
+        .read-more-button:hover {
+            background-color: #6ab33a;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #fff;
+            padding: 40px 20px;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+        
+        .footer-logo {
+            font-size: 24px;
+            font-weight: 400;
+            color: #000000;
+            margin-bottom: 10px;
+            font-family: "Titan One", sans-serif;
+            color: #2499FF
+        }
+        
+        .footer-section h3 {
+            font-size: 18px;
+            margin-bottom: 15px;
+            color: #000000;
+            font-family: "Titan One", sans-serif;
+            font-weight: 400;
+            color: #2499FF
+        }
+        
+        .footer-section p {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 400;
+            color: #000;
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section ul li {
+            margin-bottom: 8px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 400;
+            color: #000;
+        }
+        
+        .footer-section ul li a {
+            color: #000;
+        }
+        
+        .footer-section ul li a:hover {
+            color: #0099FF;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+            font-size: 14px;
+            color: #000;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 400;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="home.html" class="logo">
+                <img src="images/boink-logo.png" alt="BOINK! Logo">
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="home.html">Home</a></li>
+                    <li><a href="about-us.html">About Us</a></li>
+                    <li><a href="collections.html">Collections</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <span class="hero-badge">Tips & Tricks</span>
+            <h1 class="titan-one">Small Small Sips, Big Change: The Reusable Bottle Effect 🌱🌿</h1>
+            <div class="hero-meta">
+                <div class="hero-meta-item">
+                    <span>📅 May 12, 2023</span>
+                </div>
+                <div class="hero-meta-item">
+                    <span>👤 By BOINK! Wellness Team</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Content -->
+    <div class="blog-content">
+        <div class="blog-image">
+            <img src="images/blog-4.jpg" alt="Recycling plastic bottles">
+        </div>
+        
+        <p>You've probably heard it a hundred times: "Use a reusable bottle!" But let's talk about why it actually matters and why your BOINK! bottle isn't just cute, but powerful in a low-key world-saving kind of way.</p>
+        
+        <h2>❤️ The Real Deal with Single-Use Plastics</h2>
+        <p>Let's break it down. According to the United Nations, over 1 million plastic bottles are purchased every minute globally. Most of them aren't recycled and end up in landfills, oceans, or breaking down into microplastics.</p>
+        <p>Switching to a reusable bottle is one of the easiest (and most aesthetic) lifestyle changes you can make. With BOINK! by your side, you're:</p>
+        
+        <div class="checklist-item">Saying no to waste</div>
+        <div class="checklist-item">Keeping your drinks at the perfect temp (no more sad lukewarm tea)</div>
+        <div class="checklist-item">Doing your bit for the environment</div>
+        
+        <p>And let's be honest, it looks way better on your desk or in your bag than a generic plastic bottle.</p>
+        
+        <h2>✨ Sustainability Can Be Stylish</h2>
+        <p>Gone are the days when "eco-friendly" meant boring or monotonous. The BOINK! bottles are proof that sustainability can be part of your everyday life. Whether you're heading to campus, work, or your weekend cafe-hop, the thoughtfully chosen colors, the minimalistic unique design makes it an accessory you would want to carry around. Plus, a cute reusable bottle is a conversation starter so why settle for disposable and dull, when you can sip sustainably in style?</p>
+        
+        <h2>💰 Reusable Bottles = More Savings, Less Spending</h2>
+        <p>Now let's talk money. Sure, buying a reusable bottle might seem like a bigger upfront investment – but it pays off fast. The average bottled water costs around $1 to $2 per bottle, depending on where you are. Let's say you buy just one bottle a day - this amounts to $7.50 per week, $30 a month, and $360 a year. On just water.</p>
+        <p>Choosing to use a reusable bottle isn't just about saving the planet. It's about making mindful choices that align with who you are and who you want to be. So keep sippin', keep refillin', and keep doing you. The earth will thank you. 💚</p>
+    </div>
+
+    <!-- Read More Section -->
+    <div class="read-more">
+        <a href="blog.html" class="read-more-button">Read more articles</a>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <div class="footer-logo titan-one">BOINK!</div>
+                <p>Innovative and trendy drinkware for young people. Express yourself with every sip.</p>
+            </div>
+            <div class="footer-section">
+                <h3 class="titan-one">Shop</h3>
+                <ul>
+                    <li><a href="collections.html">Collections</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3 class="titan-one">Company</h3>
+                <ul>
+                    <li><a href="about-us.html">About Us</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3 class="titan-one">Help</h3>
+                <ul>
+                    <li><a href="faq.html">FAQ</a></li>
+                    <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 BOINK!. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arctic Pop - Winter Collection - BOINK!</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Titan+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        body {
+            line-height: 1.6;
+            color: #333;
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .titan-one {
+            font-family: "Titan One", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+        }
+        
+        /* Header Styles */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            background-color: #fff;
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 40px;     
+            width: auto;       
+            max-width: 100%;    
+            object-fit: contain;
+            display: block;     
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 20px;
+        }
+        
+        nav ul li a {
+            color: #333;
+            font-weight: 400;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        nav ul li a:hover {
+            color: #0099FF;
+        }
+        
+        /* Breadcrumb */
+        .breadcrumb {
+            padding: 15px 20px;
+            background-color: #f9f9f9;
+        }
+        
+        .breadcrumb ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        .breadcrumb ul li {
+            margin-right: 10px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 400;
+        }
+        
+        .breadcrumb ul li:after {
+            content: "/";
+            margin-left: 10px;
+            color: #999;
+        }
+        
+        .breadcrumb ul li:last-child:after {
+            content: "";
+        }
+        
+        .breadcrumb ul li a:hover {
+            color: #0099FF;
+        }
+        
+        /* Product Section */
+        .product-section {
+            padding: 40px 20px;
+            background-color: #fff;
+        }
+        
+        .product-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .product-gallery {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .main-image {
+            margin-bottom: 20px;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .main-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .magnify-glass {
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            pointer-events: none;
+            opacity: 0;
+            border: 3px solid #fff;
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+            transform: translate(-50%, -50%);
+            background-repeat: no-repeat;
+            z-index: 2;
+            transition: opacity 0.3s ease;
+        }
+        
+        .thumbnail-gallery {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+        
+        .thumbnail {
+            border-radius: 5px;
+            overflow: hidden;
+            cursor: pointer;
+            width: 100%;
+            aspect-ratio: 1/1;
+            transition: transform 0.2s ease;
+            border: 2px solid transparent;
+        }
+        
+        .thumbnail:hover {
+            transform: scale(1.05);
+        }
+        
+        .thumbnail.active {
+            border-color: #1893F8;
+        }
+        
+        .thumbnail img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+        }
+        
+        .product-info h1 {
+            font-size: 32px;
+            margin-bottom: 10px;
+            color: #1893F8;
+            font-family: "Titan One", sans-serif;
+        }
+        
+        .product-rating {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .stars {
+            color: #FFD700;
+            margin-right: 10px;
+        }
+        
+        .review-count {
+            color: #666;
+            font-size: 14px;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .product-price {
+            font-size: 24px;
+            font-weight: 700;
+            color: #69CEF0;
+            margin-bottom: 20px;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .product-description {
+            margin-bottom: 30px;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .checkout-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            padding: 15px;
+            background-color: #FF502E;
+            color: white;
+            text-align: center;
+            border-radius: 5px;
+            font-weight: 400;
+            margin-bottom: 20px;
+            transition: background-color 0.3s;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .checkout-btn:hover {
+            background-color: #e64525;
+        }
+        
+        .checkout-btn img {
+            height: 20px;
+            margin-right: 10px;
+        }
+        
+        .shipping-info {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px 0;
+            border-top: 1px solid #eee;
+            border-bottom: 1px solid #eee;
+            margin-bottom: 20px;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        /* Customer Reviews */
+        .reviews-section {
+            padding: 60px 20px;
+            background-color: #F1e8DD;
+        }
+        
+        .reviews-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .reviews-header {
+            font-size: 28px;
+            margin-bottom: 30px;
+            color: #FF502E;
+            font-family: "Titan One", sans-serif;
+        }
+        
+        .review {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .reviewer {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .reviewer-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #f0f0f0;
+            margin-right: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: #666;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .reviewer-info {
+            flex: 1;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .reviewer-name {
+            font-weight: bold;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .review-date {
+            font-size: 14px;
+            color: #666;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .review-stars {
+            color: #FFD700;
+            margin-left: auto;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .review-text {
+            margin-top: 10px;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        /* Write a Review */
+        .write-review {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            margin-top: 40px;
+        }
+        
+        .write-review h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            font-family: "Titan One", sans-serif;
+            color: #FF502E;
+        }
+        
+        .star-rating {
+            display: flex;
+            flex-direction: row;
+            gap: 5px;
+        }
+
+        .star-rating input {
+            display: none;
+        }
+
+        .star-rating label {
+            cursor: pointer;
+            font-size: 24px;
+            color: #ddd;
+        }
+
+        /* Fix the star rating to work from left to right */
+        .star-rating label:hover,
+        .star-rating label:hover ~ label {
+            color: #FFD700;
+        }
+
+        .star-rating input:checked ~ label {
+            color: #ddd;
+        }
+
+        .star-rating input:checked + label,
+        .star-rating input:checked + label ~ label {
+            color: #ddd;
+        }
+
+        .star-rating input:checked + label,
+        .star-rating input:checked ~ input + label {
+            color: #FFD700;
+        }
+        
+        .rating-select {
+            margin-bottom: 20px;
+        }
+        
+        .rating-label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .review-form-group {
+            margin-bottom: 20px;
+        }
+        
+        .review-form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .review-form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            height: 150px;
+            resize: vertical;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .submit-review-btn {
+            background-color: #6495ED;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: 400;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .submit-review-btn:hover {
+            background-color: #4169E1;
+        }
+        
+        .success-message {
+            display: none;
+            background-color: #d4edda;
+            color: #155724;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+            text-align: center;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        /* Back to Collections */
+        .back-container {
+            text-align: center;
+            margin: 40px 0;
+        }
+        
+        .back-button {
+            display: inline-block;
+            background-color: #1893F8;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 5px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 400;
+            transition: background-color 0.3s;
+        }
+        
+        .back-button:hover {
+            background-color: #1580d9;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #fff;
+            padding: 40px 20px;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+        
+        .footer-logo {
+            font-size: 24px;
+            font-weight: 400;
+            color: #000000;
+            margin-bottom: 10px;
+            font-family: "Titan One", sans-serif;
+            color: #2499FF;
+        }
+        
+        .footer-section h3 {
+            font-size: 18px;
+            margin-bottom: 15px;
+            color: #000000;
+            font-family: "Titan One", sans-serif;
+            font-weight: 400;
+            color: #2499FF;
+        }
+        
+        .footer-section p {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 400;
+            color: #000;
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section ul li {
+            margin-bottom: 8px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 400;
+            color: #000;
+        }
+        
+        .footer-section ul li a {
+            color: #000;
+        }
+        
+        .footer-section ul li a:hover {
+            color: #0099FF;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+            font-size: 14px;
+            color: #000;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 400;
+        }
+        
+        /* Snow Effect */
+        .snowflake {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #ADD8E6; /* Light blue color instead of white */
+            border-radius: 50%;
+            filter: drop-shadow(0 0 10px #ADD8E6); /* Light blue glow */
+            animation: falling linear forwards;
+            z-index: 10000;
+            pointer-events: none;
+        }
+        
+        @keyframes falling {
+            0% {
+                transform: translateY(0) rotate(0) scale(1);
+                opacity: 0.8;
+            }
+            25% {
+                transform: translateY(150px) translateX(30px) rotate(90deg) scale(0.9);
+            }
+            50% {
+                transform: translateY(300px) translateX(-20px) rotate(180deg) scale(0.8);
+            }
+            75% {
+                transform: translateY(450px) translateX(20px) rotate(270deg) scale(0.7);
+            }
+            100% {
+                transform: translateY(600px) translateX(-30px) rotate(360deg) scale(0.6);
+                opacity: 0;
+            }
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .product-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="home.html" class="logo">
+                <img src="images/boink-logo.png" alt="BOINK! Logo">
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="home.html">Home</a></li>
+                    <li><a href="about-us.html">About Us</a></li>
+                    <li><a href="collections.html">Collections</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        <div class="container">
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="collections.html">Collections</a></li>
+                <li>Arctic Pop</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Product Section -->
+    <section class="product-section">
+        <div class="product-container">
+            <div class="product-gallery">
+                <div class="main-image">
+                    <img id="main-product-image" src="images/winter-1.jpg" alt="Arctic Pop Bottle">
+                    <div class="magnify-glass"></div>
+                </div>
+                <div class="thumbnail-gallery">
+                    <div class="thumbnail active" data-img="winter-1.jpg">
+                        <img src="images/winter-1.jpg" alt="Arctic Pop Thumbnail 1">
+                    </div>
+                    <div class="thumbnail" data-img="winter-2.webp">
+                        <img src="images/winter-2.webp" alt="Arctic Pop Thumbnail 2">
+                    </div>
+                    <div class="thumbnail" data-img="winter-3.jpg">
+                        <img src="images/winter-3.jpg" alt="Arctic Pop Thumbnail 3">
+                    </div>
+                    <div class="thumbnail" data-img="winter-4.png">
+                        <img src="images/winter-4.png" alt="Arctic Pop Thumbnail 4">
+                    </div>
+                </div>
+            </div>
+            <div class="product-info">
+                <h1 class="titan-one">Arctic Pop</h1>
+                <div class="product-rating">
+                    <div class="stars">★★★★★</div>
+                    <div class="review-count">(120 reviews)</div>
+                </div>
+                <div class="product-price">$39.24</div>
+                <div class="product-description">
+                    <p>With its crisp white base and frosty blue top, it's made for those who keep it chill on the outside. A 1000ml stainless steel core keeps your drink cold (and hot) for up to 24 hours, while the pop-up straw and U-hollow handle makes it easy to sip and go.</p>
+                </div>
+                <a href="https://shopee.sg/product/940344685/16996682233?d_id=4a4dd&uls_trackid=52g456i000ts&utm_content=2tBViMs8JWpemStm2zu3Fk6wYcTR" class="checkout-btn">
+                    <img src="images/shopee-logo.webp" alt="Shopee"> Checkout on Shopee
+                </a>
+                <div class="shipping-info">
+                    <div>
+                        <strong>Free shipping</strong>
+                        <p>In stock</p>
+                    </div>
+                    <div>
+                        <strong>On orders over $50</strong>
+                        <p>Ready to ship</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Customer Reviews -->
+    <section class="reviews-section">
+        <div class="reviews-container">
+            <h2 class="reviews-header titan-one">Customer Reviews</h2>
+            
+            <div class="review">
+                <div class="reviewer">
+                    <div class="reviewer-avatar">E</div>
+                    <div class="reviewer-info">
+                        <div class="reviewer-name">Erica</div>
+                        <div class="review-date">6 weeks ago</div>
+                    </div>
+                    <div class="review-stars">★★★★★</div>
+                </div>
+                <div class="review-text">
+                    <p>Accidentally tossed it into my gym bag sideways – but my bag stayed dry. That seal is SOLID.</p>
+                </div>
+            </div>
+            
+            <div class="review">
+                <div class="reviewer">
+                    <div class="reviewer-avatar">W</div>
+                    <div class="reviewer-info">
+                        <div class="reviewer-name">Wei Jie</div>
+                        <div class="review-date">4 weeks ago</div>
+                    </div>
+                    <div class="review-stars">★★★★★</div>
+                </div>
+                <div class="review-text">
+                    <p>Despite holding a full liter, it's surprisingly sleek. I throw it in my work bag and go.</p>
+                </div>
+            </div>
+            
+            <div class="review">
+                <div class="reviewer">
+                    <div class="reviewer-avatar">E</div>
+                    <div class="reviewer-info">
+                        <div class="reviewer-name">Emily</div>
+                        <div class="review-date">3 weeks ago</div>
+                    </div>
+                    <div class="review-stars">★★★★★</div>
+                </div>
+                <div class="review-text">
+                    <p>I've tried so many bottles, and this one keeps water tasting normal. No plasticky smell, ever! I also love the color, can't believe I managed to snag this series.</p>
+                </div>
+            </div>
+            
+            <div class="write-review">
+                <h3 class="titan-one">Write a Review</h3>
+                <form id="review-form">
+                    <div class="rating-select">
+                        <label class="rating-label">Your Rating</label>
+                        <div class="star-rating">
+                            <input type="radio" id="star1" name="rating" value="1" required>
+                            <label for="star1">★</label>
+                            <input type="radio" id="star2" name="rating" value="2">
+                            <label for="star2">★</label>
+                            <input type="radio" id="star3" name="rating" value="3">
+                            <label for="star3">★</label>
+                            <input type="radio" id="star4" name="rating" value="4">
+                            <label for="star4">★</label>
+                            <input type="radio" id="star5" name="rating" value="5">
+                            <label for="star5">★</label>
+                        </div>
+                    </div>
+                    
+                    <div class="review-form-group">
+                        <label for="review-text">Your Review</label>
+                        <textarea id="review-text" placeholder="Share your thoughts about this product..." required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-review-btn">Submit Review</button>
+                    
+                    <div class="success-message" id="success-message">
+                        Thank you for your review! It has been submitted successfully.
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Back to Collections -->
+    <div class="back-container">
+        <a href="collections.html" class="back-button">&larr; Back to Collections</a>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <div class="footer-logo titan-one">BOINK!</div>
+                <p>Innovative and trendy drinkware for young people. Express yourself with every sip.</p>
+            </div>
+            <div class="footer-section">
+                <h3 class="titan-one">Shop</h3>
+                <ul>
+                    <li><a href="collections.html">Collections</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3 class="titan-one">Company</h3>
+                <ul>
+                    <li><a href="about-us.html">About Us</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3 class="titan-one">Help</h3>
+                <ul>
+                    <li><a href="faq.html">FAQ</a></li>
+                    <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 BOINK!. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Snow Effect
+        document.addEventListener('DOMContentLoaded', function() {
+            // Start the snow effect when page loads
+            startSnowfall();
+            
+            // Initialize the product gallery
+            initProductGallery();
+            
+            // Initialize review form
+            initReviewForm();
+        });
+
+        function startSnowfall() {
+            // Create initial batch of snowflakes
+            for (let i = 0; i < 30; i++) {
+                createSnowflake();
+            }
+            
+            // Continue creating snowflakes at intervals
+            setInterval(function() {
+                createSnowflake();
+            }, 200);
+        }
+
+        function createSnowflake() {
+            const snowflake = document.createElement('div');
+            snowflake.className = 'snowflake';
+            
+            // Random size between 5px and 15px
+            const size = Math.random() * 10 + 5;
+            snowflake.style.width = `${size}px`;
+            snowflake.style.height = `${size}px`;
+            
+            // Random position at the top of the page
+            const posX = Math.random() * window.innerWidth;
+            snowflake.style.left = `${posX}px`;
+            snowflake.style.top = '0px';
+            
+            // Random opacity for a more natural look
+            snowflake.style.opacity = Math.random() * 0.5 + 0.3;
+            
+            // Random animation duration between 5s and 15s
+            const duration = Math.random() * 10 + 5;
+            snowflake.style.animationDuration = `${duration}s`;
+            
+            document.body.appendChild(snowflake);
+            
+            // Remove snowflake after animation completes
+            setTimeout(() => {
+                snowflake.remove();
+            }, duration * 1000);
+        }
+
+        function initProductGallery() {
+            const mainImage = document.getElementById('main-product-image');
+            const thumbnails = document.querySelectorAll('.thumbnail');
+            const magnifyGlass = document.querySelector('.magnify-glass');
+            
+            // Thumbnail click handler
+            thumbnails.forEach(thumbnail => {
+                thumbnail.addEventListener('click', function() {
+                    // Remove active class from all thumbnails
+                    thumbnails.forEach(t => t.classList.remove('active'));
+                    
+                    // Add active class to clicked thumbnail
+                    this.classList.add('active');
+                    
+                    // Update main image
+                    const imgSrc = this.getAttribute('data-img');
+                    mainImage.src = `images/${imgSrc}`;
+                });
+            });
+            
+            // Image magnification
+            const mainImageContainer = document.querySelector('.main-image');
+            
+            mainImageContainer.addEventListener('mousemove', function(e) {
+                const bounds = this.getBoundingClientRect();
+                const x = e.clientX - bounds.left;
+                const y = e.clientY - bounds.top;
+                
+                // Position the magnify glass
+                magnifyGlass.style.left = `${x}px`;
+                magnifyGlass.style.top = `${y}px`;
+                
+                // Set the background image and position
+                magnifyGlass.style.backgroundImage = `url(${mainImage.src})`;
+                magnifyGlass.style.backgroundSize = `${bounds.width * 2}px ${bounds.height * 2}px`;
+                magnifyGlass.style.backgroundPosition = `${-x * 2 + 75}px ${-y * 2 + 75}px`;
+                
+                // Show the magnify glass
+                magnifyGlass.style.opacity = '1';
+            });
+            
+            mainImageContainer.addEventListener('mouseleave', function() {
+                // Hide the magnify glass
+                magnifyGlass.style.opacity = '0';
+            });
+        }
+
+        function initReviewForm() {
+            const reviewForm = document.getElementById('review-form');
+            const successMessage = document.getElementById('success-message');
+            
+            reviewForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const rating = reviewForm.querySelector('input[name="rating"]:checked');
+                const reviewText = document.getElementById('review-text').value.trim();
+                
+                if (!rating || !reviewText) {
+                    alert('Please provide both a rating and review text.');
+                    return;
+                }
+                
+                // Show success message
+                successMessage.style.display = 'block';
+                
+                // Reset form
+                reviewForm.reset();
+                
+                // Hide success message after 3 seconds
+                setTimeout(() => {
+                    successMessage.style.display = 'none';
+                }, 3000);
+            });
+        }
+    </script>
+</body>
+</html>
