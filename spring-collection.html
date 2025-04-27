@@ -56,19 +56,9 @@
             padding: 15px 20px;
             background-color: #fff;
         }
-
-        header .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
         
-        .logo img {
-            height: 40px;     
-            width: auto;       
-            max-width: 100%;    
-            object-fit: contain;
-            display: block;     
+        .logo {
+            height: 35px;
         }
         
         nav ul {
@@ -180,16 +170,6 @@
             cursor: pointer;
             width: 100%;
             aspect-ratio: 1/1;
-            transition: transform 0.2s ease;
-            border: 2px solid transparent;
-        }
-        
-        .thumbnail:hover {
-            transform: scale(1.05);
-        }
-        
-        .thumbnail.active {
-            border-color: #FF8F7A;
         }
         
         .thumbnail img {
@@ -225,8 +205,8 @@
         
         .product-price {
             font-size: 24px;
-            font-weight: 700;
-            color: #F19F8F;
+            font-weight: bold;
+            color: #FFD8D1;
             margin-bottom: 20px;
             font-family: 'Poppins', sans-serif;
         }
@@ -273,7 +253,7 @@
         
         /* Customer Reviews */
         .reviews-section {
-            padding: 60px 20px;
+            padding: 40px 20px;
             background-color: #F1e8DD;
         }
         
@@ -360,7 +340,8 @@
         
         .star-rating {
             display: flex;
-            flex-direction: row;
+            flex-direction: row-reverse;
+            justify-content: flex-end;
             gap: 5px;
         }
 
@@ -374,25 +355,13 @@
             color: #ddd;
         }
 
-        /* Star rating from left to right */
+        /* Fix the star rating to work from left to right */
         .star-rating label:hover,
         .star-rating label:hover ~ label {
-            color: #ddd;
+            color: #FFD700;
         }
 
         .star-rating input:checked ~ label {
-            color: #FFD700;
-        }
-
-        .star-rating label:hover ~ input:not(:checked) ~ label {
-            color: #ddd;
-        }
-
-        .star-rating input:checked + label {
-            color: #FFD700;
-        }
-
-        .star-rating label:hover ~ input:checked ~ label {
             color: #FFD700;
         }
         
@@ -493,19 +462,17 @@
         .footer-logo {
             font-size: 24px;
             font-weight: 400;
-            color: #000000;
+            color: #0099FF;
             margin-bottom: 10px;
             font-family: "Titan One", sans-serif;
-            color: #2499FF;
         }
         
         .footer-section h3 {
             font-size: 18px;
             margin-bottom: 15px;
-            color: #000000;
+            color: #0099FF;
             font-family: "Titan One", sans-serif;
             font-weight: 400;
-            color: #2499FF;
         }
         
         .footer-section p {
@@ -593,24 +560,22 @@
     </style>
 </head>
 <body>
+    <!-- Header -->
     <header>
-        <div class="container">
-            <a href="home.html" class="logo">
-                <img src="images/boink-logo.png" alt="BOINK! Logo">
-            </a>
-            <nav>
-                <ul>
-                    <li><a href="home.html">Home</a></li>
-                    <li><a href="about-us.html">About Us</a></li>
-                    <li><a href="collections.html">Collections</a></li>
-                    <li><a href="faq.html">FAQ</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                    <li><a href="blog.html">Blog</a></li>
-                </ul>
-            </nav>
-        </div>
+        <a href="home.html">
+            <img src="images/boink-logo.png" alt="BOINK!" class="logo">
+        </a>
+        <nav>
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="about-us.html">About Us</a></li>
+                <li><a href="collections.html">Collections</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="blog.html">Blog</a></li>
+            </ul>
+        </nav>
     </header>
-
 
     <!-- Breadcrumb -->
     <div class="breadcrumb">
@@ -632,7 +597,7 @@
                     <div class="magnify-glass"></div>
                 </div>
                 <div class="thumbnail-gallery">
-                    <div class="thumbnail active" data-img="spring-1.webp">
+                    <div class="thumbnail" data-img="spring-1.webp">
                         <img src="images/spring-1.webp" alt="The Daydreamer Thumbnail 1">
                     </div>
                     <div class="thumbnail" data-img="spring-2.svg">
@@ -796,59 +761,59 @@
     <script>
         // Cherry Blossom Effect
         document.addEventListener('DOMContentLoaded', function() {
-            // Start the cherry blossom effect when page loads
-            startCherryBlossoms();
-            
-            // Removed the click event listener to prevent petal creation on click
-        });
+    // Start the cherry blossom effect when page loads
+    startCherryBlossoms();
+    
+    // Remove the click event listener - we don't want cherry blossoms on click
+});
 
-        function startCherryBlossoms() {
-            // Create initial batch of petals
-            for (let i = 0; i < 15; i++) {
-                createFallingPetal();
-            }
-            
-            // Continue creating petals at intervals
-            setInterval(function() {
-                createFallingPetal();
-            }, 300);
-        }
+function startCherryBlossoms() {
+    // Create initial batch of petals
+    for (let i = 0; i < 15; i++) {
+        createFallingPetal();
+    }
+    
+    // Continue creating petals at intervals
+    setInterval(function() {
+        createFallingPetal();
+    }, 300);
+}
 
-        function createFallingPetal() {
-            const petal = document.createElement('div');
-            petal.className = 'petal';
-            
-            // Random size between 10px and 20px
-            const size = Math.random() * 10 + 10;
-            petal.style.width = `${size}px`;
-            petal.style.height = `${size}px`;
-            
-            // Random position at the top of the page
-            const posX = Math.random() * window.innerWidth;
-            petal.style.left = `${posX}px`;
-            petal.style.top = '0px';
-            
-            // Random rotation
-            const rotation = Math.random() * 360;
-            petal.style.transform = `rotate(${rotation}deg)`;
-            
-            // Random animation duration between 5s and 10s
-            const duration = Math.random() * 5 + 5;
-            petal.style.animationDuration = `${duration}s`;
-            
-            // Random color variations of pink
-            const hue = Math.random() * 20 + 350; // 350-370 (wraps to 0-10)
-            const saturation = Math.random() * 20 + 80; // 80-100%
-            const lightness = Math.random() * 10 + 85; // 85-95%
-            petal.style.backgroundColor = `hsl(${hue}, ${saturation}%, ${lightness}%)`;
-            
-            document.body.appendChild(petal);
-            
-            // Remove petal after animation completes
-            setTimeout(() => {
-                petal.remove();
-            }, duration * 1000);
-        }
+function createFallingPetal() {
+    const petal = document.createElement('div');
+    petal.className = 'petal';
+    
+    // Random size between 10px and 20px
+    const size = Math.random() * 10 + 10;
+    petal.style.width = `${size}px`;
+    petal.style.height = `${size}px`;
+    
+    // Random position at the top of the page
+    const posX = Math.random() * window.innerWidth;
+    petal.style.left = `${posX}px`;
+    petal.style.top = '0px';
+    
+    // Random rotation
+    const rotation = Math.random() * 360;
+    petal.style.transform = `rotate(${rotation}deg)`;
+    
+    // Random animation duration between 5s and 10s
+    const duration = Math.random() * 5 + 5;
+    petal.style.animationDuration = `${duration}s`;
+    
+    // Random color variations of pink
+    const hue = Math.random() * 20 + 350; // 350-370 (wraps to 0-10)
+    const saturation = Math.random() * 20 + 80; // 80-100%
+    const lightness = Math.random() * 10 + 85; // 85-95%
+    petal.style.backgroundColor = `hsl(${hue}, ${saturation}%, ${lightness}%)`;
+    
+    document.body.appendChild(petal);
+    
+    // Remove petal after animation completes
+    setTimeout(() => {
+        petal.remove();
+    }, duration * 1000);
+}
 
         // Product Image Gallery
         document.addEventListener('DOMContentLoaded', function() {
@@ -859,15 +824,9 @@
             // Thumbnail click handler
             thumbnails.forEach(thumbnail => {
                 thumbnail.addEventListener('click', function() {
-                    // Remove active class from all thumbnails
-                    thumbnails.forEach(t => t.classList.remove('active'));
-                    
-                    // Add active class to clicked thumbnail
-                    this.classList.add('active');
-                    
-                    // Update main image
                     const imgSrc = this.getAttribute('data-img');
-                    mainImage.src = `images/${imgSrc}`;
+                    // Fix the path by prepending "images/" to the image source
+                    mainImage.src = "images/" + imgSrc;
                 });
             });
             
