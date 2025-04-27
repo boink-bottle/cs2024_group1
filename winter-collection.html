@@ -56,9 +56,19 @@
             padding: 15px 20px;
             background-color: #fff;
         }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
         
-        .logo {
-            height: 35px;
+        .logo img {
+            height: 40px;     
+            width: auto;       
+            max-width: 100%;    
+            object-fit: contain;
+            display: block;     
         }
         
         nav ul {
@@ -170,6 +180,16 @@
             cursor: pointer;
             width: 100%;
             aspect-ratio: 1/1;
+            transition: transform 0.2s ease;
+            border: 2px solid transparent;
+        }
+        
+        .thumbnail:hover {
+            transform: scale(1.05);
+        }
+        
+        .thumbnail.active {
+            border-color: #1893F8;
         }
         
         .thumbnail img {
@@ -205,7 +225,7 @@
         
         .product-price {
             font-size: 24px;
-            font-weight: bold;
+            font-weight: 700;
             color: #69CEF0;
             margin-bottom: 20px;
             font-family: 'Poppins', sans-serif;
@@ -253,7 +273,7 @@
         
         /* Customer Reviews */
         .reviews-section {
-            padding: 40px 20px;
+            padding: 60px 20px;
             background-color: #F1e8DD;
         }
         
@@ -339,30 +359,42 @@
         }
         
         .star-rating {
-    display: flex;
-    flex-direction: row-reverse;
-    justify-content: flex-end;
-    gap: 5px;
-}
+            display: flex;
+            flex-direction: row;
+            gap: 5px;
+        }
 
-.star-rating input {
-    display: none;
-}
+        .star-rating input {
+            display: none;
+        }
 
-.star-rating label {
-    cursor: pointer;
-    font-size: 24px;
-    color: #ddd;
-}
+        .star-rating label {
+            cursor: pointer;
+            font-size: 24px;
+            color: #ddd;
+        }
 
-.star-rating label:hover,
-.star-rating label:hover ~ label {
-    color: #FFD700;
-}
+        /* Star rating from left to right */
+        .star-rating label:hover,
+        .star-rating label:hover ~ label {
+            color: #ddd;
+        }
 
-.star-rating input:checked ~ label {
-    color: #FFD700;
-}
+        .star-rating input:checked ~ label {
+            color: #FFD700;
+        }
+
+        .star-rating label:hover ~ input:not(:checked) ~ label {
+            color: #ddd;
+        }
+
+        .star-rating input:checked + label {
+            color: #FFD700;
+        }
+
+        .star-rating label:hover ~ input:checked ~ label {
+            color: #FFD700;
+        }
         
         .rating-select {
             margin-bottom: 20px;
@@ -461,17 +493,19 @@
         .footer-logo {
             font-size: 24px;
             font-weight: 400;
-            color: #0099FF;
+            color: #000000;
             margin-bottom: 10px;
             font-family: "Titan One", sans-serif;
+            color: #2499FF;
         }
         
         .footer-section h3 {
             font-size: 18px;
             margin-bottom: 15px;
-            color: #0099FF;
+            color: #000000;
             font-family: "Titan One", sans-serif;
             font-weight: 400;
+            color: #2499FF;
         }
         
         .footer-section p {
@@ -515,9 +549,9 @@
             position: absolute;
             width: 10px;
             height: 10px;
-            background-color: white;
+            background-color: #ADD8E6; /* Light blue color instead of white */
             border-radius: 50%;
-            filter: drop-shadow(0 0 10px white);
+            filter: drop-shadow(0 0 10px #ADD8E6); /* Light blue glow */
             animation: falling linear forwards;
             z-index: 10000;
             pointer-events: none;
@@ -562,22 +596,24 @@
     </style>
 </head>
 <body>
-    <!-- Header -->
     <header>
-        <a href="home.html">
-            <img src="images/boink-logo.png" alt="BOINK!" class="logo">
-        </a>
-        <nav>
-            <ul>
-                <li><a href="home.html">Home</a></li>
-                <li><a href="about-us.html">About Us</a></li>
-                <li><a href="collections.html">Collections</a></li>
-                <li><a href="faq.html">FAQ</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li><a href="blog.html">Blog</a></li>
-            </ul>
-        </nav>
+        <div class="container">
+            <a href="home.html" class="logo">
+                <img src="images/boink-logo.png" alt="BOINK! Logo">
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="home.html">Home</a></li>
+                    <li><a href="about-us.html">About Us</a></li>
+                    <li><a href="collections.html">Collections</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
+
 
     <!-- Breadcrumb -->
     <div class="breadcrumb">
@@ -599,7 +635,7 @@
                     <div class="magnify-glass"></div>
                 </div>
                 <div class="thumbnail-gallery">
-                    <div class="thumbnail" data-img="winter-1.JPG">
+                    <div class="thumbnail active" data-img="winter-1.JPG">
                         <img src="images/winter-1.JPG" alt="Arctic Pop Thumbnail 1">
                     </div>
                     <div class="thumbnail" data-img="winter-2.webp">
@@ -693,17 +729,17 @@
                     <div class="rating-select">
                         <label class="rating-label">Your Rating</label>
                         <div class="star-rating">
-    <input type="radio" id="star5" name="rating" value="5">
-    <label for="star5">★</label>
-    <input type="radio" id="star4" name="rating" value="4">
-    <label for="star4">★</label>
-    <input type="radio" id="star3" name="rating" value="3">
-    <label for="star3">★</label>
-    <input type="radio" id="star2" name="rating" value="2">
-    <label for="star2">★</label>
-    <input type="radio" id="star1" name="rating" value="1" required>
-    <label for="star1">★</label>
-</div>
+                            <input type="radio" id="star5" name="rating" value="5">
+                            <label for="star5">★</label>
+                            <input type="radio" id="star4" name="rating" value="4">
+                            <label for="star4">★</label>
+                            <input type="radio" id="star3" name="rating" value="3">
+                            <label for="star3">★</label>
+                            <input type="radio" id="star2" name="rating" value="2">
+                            <label for="star2">★</label>
+                            <input type="radio" id="star1" name="rating" value="1" required>
+                            <label for="star1">★</label>
+                        </div>
                     </div>
                     
                     <div class="review-form-group">
@@ -765,6 +801,12 @@
         document.addEventListener('DOMContentLoaded', function() {
             // Start the snow effect when page loads
             startSnowfall();
+            
+            // Initialize the product gallery
+            initProductGallery();
+            
+            // Initialize review form
+            initReviewForm();
         });
 
         function startSnowfall() {
@@ -808,8 +850,7 @@
             }, duration * 1000);
         }
 
-        // Product Image Gallery
-        document.addEventListener('DOMContentLoaded', function() {
+        function initProductGallery() {
             const mainImage = document.getElementById('main-product-image');
             const thumbnails = document.querySelectorAll('.thumbnail');
             const magnifyGlass = document.querySelector('.magnify-glass');
@@ -817,8 +858,15 @@
             // Thumbnail click handler
             thumbnails.forEach(thumbnail => {
                 thumbnail.addEventListener('click', function() {
+                    // Remove active class from all thumbnails
+                    thumbnails.forEach(t => t.classList.remove('active'));
+                    
+                    // Add active class to clicked thumbnail
+                    this.classList.add('active');
+                    
+                    // Update main image
                     const imgSrc = this.getAttribute('data-img');
-                    mainImage.src = imgSrc;
+                    mainImage.src = `images/${imgSrc}`;
                 });
             });
             
@@ -829,10 +877,6 @@
                 const bounds = this.getBoundingClientRect();
                 const x = e.clientX - bounds.left;
                 const y = e.clientY - bounds.top;
-                
-                // Calculate position as percentage
-                const xPercent = x / bounds.width * 100;
-                const yPercent = y / bounds.height * 100;
                 
                 // Position the magnify glass
                 magnifyGlass.style.left = `${x}px`;
@@ -851,10 +895,9 @@
                 // Hide the magnify glass
                 magnifyGlass.style.opacity = '0';
             });
-        });
+        }
 
-        // Review Form Validation
-        document.addEventListener('DOMContentLoaded', function() {
+        function initReviewForm() {
             const reviewForm = document.getElementById('review-form');
             const successMessage = document.getElementById('success-message');
             
@@ -880,7 +923,7 @@
                     successMessage.style.display = 'none';
                 }, 3000);
             });
-        });
+        }
     </script>
 </body>
 </html>
